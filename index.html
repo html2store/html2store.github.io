@@ -1,678 +1,171 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
-  <!-- Primary Meta Tags -->
-  <title>HTML2 Suite Pro — Convert HTML to Native Windows, Linux, and macOS Apps</title>
-  <meta name="description" content="Build native desktop apps from your HTML. HTML2Win Pro, HTML2Linux Pro, and HTML2Mac Pro are sold separately and optimized for each OS. Code signing, installers, auto-updates, and CLI included." />
-  <meta name="keywords" content="HTML to Windows, HTML to Linux, HTML to macOS, HTML converter, native app, electron alternative, web to desktop, desktop app builder, HTML2Win Pro, HTML2Linux Pro, HTML2Mac Pro" />
-  <meta name="author" content="Guillaume Lessard - iD01t Productions" />
-  <meta name="robots" content="index, follow" />
-  <meta name="theme-color" content="#0a0a0a" />
-
-  <!-- Canonical -->
-  <link rel="canonical" href="https://html2store.github.io/" />
-
-  <!-- Open Graph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://html2store.github.io/" />
-  <meta property="og:title" content="HTML2 Suite Pro — Build Anywhere, Run Everywhere" />
-  <meta property="og:description" content="Turn HTML into native Windows, Linux, and macOS apps. Each product sold separately with pro features: installers, auto-updates, code signing, and CLI." />
-  <meta property="og:image" content="https://id01t.github.io/html2-suite-overview.png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:site_name" content="HTML2 Suite Pro" />
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="HTML2 Suite Pro — Build Anywhere, Run Everywhere" />
-  <meta name="twitter:description" content="Turn HTML into native Windows, Linux, and macOS apps. Each product sold separately with pro features: installers, auto-updates, code signing, and CLI." />
-  <meta name="twitter:image" content="https://id01t.github.io/html2-suite-overview.png" />
-
-  <!-- Icons -->
-  <link rel="icon" type="image/x-icon" href="favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
-
-  <!-- CSP (YouTube + Formspree) -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https: blob:; script-src 'self' 'unsafe-inline' https://www.youtube.com https://s.ytimg.com https://www.google.com https://formspree.io; style-src 'self' 'unsafe-inline'; font-src 'self' data:; frame-src https://www.youtube.com https://www.youtube-nocookie.com; connect-src 'self' https://www.youtube.com https://www.google.com https://formspree.io; media-src 'self' https://www.youtube.com https://*.googlevideo.com blob:; object-src 'none'; base-uri 'self'; form-action 'self' https://formspree.io;" />
-
-  <!-- Performance Hints -->
-  <link rel="preconnect" href="https://www.youtube.com" />
-  <link rel="preconnect" href="https://www.google.com" />
-  <link rel="dns-prefetch" href="https://id01t.github.io" />
-  <link rel="preload" as="image" href="https://id01t.github.io/html2-suite-overview.png" imagesrcset="https://id01t.github.io/html2-suite-overview.png 1200w" imagesizes="(max-width: 1200px) 100vw, 1200px" />
-
-  <!-- Organization JSON-LD -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Organization",
-    "name":"iD01t Productions",
-    "founder":{"@type":"Person","name":"Guillaume Lessard","jobTitle":"Software Developer & Founder"},
-    "url":"https://id01t.store",
-    "description":"Professional software development and digital products by Guillaume Lessard",
-    "foundingDate":"2024"
-  }
-  </script>
-
-  <!-- Software JSON-LD (per product) -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"SoftwareApplication",
-    "name":"HTML2Win Pro",
-    "operatingSystem":"Windows",
-    "applicationCategory":"DeveloperApplication",
-    "softwareVersion":"2.0",
-    "description":"Convert HTML into native Windows applications with installers, auto-updates, code signing, and CLI.",
-    "creator":{"@type":"Person","name":"Guillaume Lessard"},
-    "publisher":{"@type":"Organization","name":"iD01t Productions"},
-    "offers":{"@type":"Offer","priceCurrency":"USD","price":"49","url":"https://id01t.itch.io/html2win","availability":"https://schema.org/InStock"},
-    "featureList":["Output: .exe installer and .msi packaging","Auto-update channel with delta patches","Code signing: Authenticode, SHA-256","System tray, file associations, protocol handlers","CLI: headless builds and CI automation"]
-  }
-  </script>
-
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"SoftwareApplication",
-    "name":"HTML2Linux Pro",
-    "operatingSystem":"Linux",
-    "applicationCategory":"DeveloperApplication",
-    "softwareVersion":"2.0",
-    "description":"Build native Linux apps from HTML. Outputs AppImage, .deb, and .rpm with auto-update options and CLI.",
-    "creator":{"@type":"Person","name":"Guillaume Lessard"},
-    "publisher":{"@type":"Organization","name":"iD01t Productions"},
-    "offers":{"@type":"Offer","priceCurrency":"USD","price":"49","url":"https://id01t.itch.io/html2linux-pro","availability":"https://schema.org/InStock"},
-    "featureList":["Output: AppImage, .deb (Debian/Ubuntu), .rpm (Fedora/Red Hat)","Auto-updates via AppImageUpdate or repo flows","Desktop entries, icons, MIME types","Sandbox and FS permissions guidance","CLI: reproducible builds for CI"]
-  }
-  </script>
-
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"SoftwareApplication",
-    "name":"HTML2Mac Pro",
-    "operatingSystem":"macOS",
-    "applicationCategory":"DeveloperApplication",
-    "softwareVersion":"2.0",
-    "description":"Generate macOS .app and .dmg from HTML with signing, notarization, auto-updates, and CLI.",
-    "creator":{"@type":"Person","name":"Guillaume Lessard"},
-    "publisher":{"@type":"Organization","name":"iD01t Productions"},
-    "offers":{"@type":"Offer","priceCurrency":"USD","price":"49","url":"https://html2store.github.io/#cta","availability":"https://schema.org/PreOrder"},
-    "featureList":["Output: .app bundle, .dmg installer","Code signing and Apple notarization","Dock badges, notifications, URL schemes","Auto-update with differential releases","CLI: scripted builds for CI"]
-  }
-  </script>
-
-  <!-- FAQPage JSON-LD -->
-  <script type="application/ld+json">
-  {
-   "@context":"https://schema.org",
-   "@type":"FAQPage",
-   "mainEntity":[
-     {"@type":"Question","name":"Are the products sold separately?","acceptedAnswer":{"@type":"Answer","text":"Yes. HTML2Win Pro, HTML2Linux Pro, and HTML2Mac Pro are separate licenses."}},
-     {"@type":"Question","name":"Do I need to rewrite my code?","acceptedAnswer":{"@type":"Answer","text":"No. Your existing HTML, CSS, and JavaScript are used as-is."}},
-     {"@type":"Question","name":"How do updates work?","acceptedAnswer":{"@type":"Answer","text":"Enable auto-updates; we ship differential releases to minimize download size."}},
-     {"@type":"Question","name":"Is code signing supported?","acceptedAnswer":{"@type":"Answer","text":"Yes. Windows Authenticode, macOS signing & notarization, and Linux package signing."}},
-     {"@type":"Question","name":"Can I automate builds?","acceptedAnswer":{"@type":"Answer","text":"Yes. The CLI supports headless CI builds with reproducible outputs."}},
-     {"@type":"Question","name":"Refunds?","acceptedAnswer":{"@type":"Answer","text":"14-day money-back guarantee if the tool doesn’t meet your needs."}}
-   ]
-  }
-  </script>
-
-  <style>
-    /* --- Design System (unchanged) --- */
-    :root{
-      --primary-blue:#3b82f6;--primary-blue-light:#60a5fa;--primary-blue-dark:#2563eb;
-      --primary-green:#22c55e;--primary-green-light:#4ade80;--accent-purple:#8b5cf6;--accent-cyan:#06b6d4;
-      --dark-bg:#0a0a0a;--dark-secondary:#1a1a2e;--dark-tertiary:#16213e;--dark-card:#0f172a;
-      --text-primary:#ffffff;--text-secondary:#cbd5e1;--text-muted:#94a3b8;
-      --glow-blue:rgba(59,130,246,.4);--glow-green:rgba(34,197,94,.4);--glow-purple:rgba(139,92,246,.3);
-      --glass-bg:rgba(255,255,255,.05);--glass-border:rgba(255,255,255,.1);
-      --section-padding:10rem;--container-max:1400px;
-      --font-display:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Inter',sans-serif;--font-mono:'SF Mono',Monaco,'Cascadia Code','Courier New',monospace
-    }
-    *{margin:0;padding:0;box-sizing:border-box}
-    html{scroll-behavior:smooth;scroll-padding-top:80px}
-    body{font-family:var(--font-display);background:var(--dark-bg);color:var(--text-primary);line-height:1.6;overflow-x:hidden;position:relative}
-    body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;background:
-      radial-gradient(ellipse at 20% 30%, rgba(59,130,246,.15) 0%, transparent 50%),
-      radial-gradient(ellipse at 80% 70%, rgba(139,92,246,.15) 0%, transparent 50%),
-      radial-gradient(ellipse at 50% 50%, rgba(34,197,94,.1) 0%, transparent 50%),
-      linear-gradient(135deg,var(--dark-bg) 0%,var(--dark-secondary) 50%,var(--dark-tertiary) 100%);z-index:-2;animation:meshFloat 20s ease-in-out infinite}
-    @keyframes meshFloat{0%,100%{transform:scale(1) rotate(0)}50%{transform:scale(1.1) rotate(5deg)}}
-    .particles{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.6}
-    .particle{position:absolute;width:3px;height:3px;background:var(--primary-blue);border-radius:50%;box-shadow:0 0 10px var(--glow-blue);animation:particleFloat 25s infinite ease-in-out}
-    @keyframes particleFloat{0%,100%{transform:translate(0,0) scale(1);opacity:.3}25%{transform:translate(150px,-150px) scale(1.5);opacity:.6}50%{transform:translate(-100px,200px) scale(.8);opacity:.4}75%{transform:translate(200px,100px) scale(1.2);opacity:.5}}
-    .container{max-width:var(--container-max);margin:0 auto;padding:0 2rem;position:relative;z-index:1}
-
-    .skip-link{position:absolute;top:-100px;left:0;background:var(--primary-blue);color:#fff;padding:1rem 2rem;text-decoration:none;z-index:10000;border-radius:0 0 8px 0;font-weight:600;transition:top .3s}
-    .skip-link:focus{top:0}
-    a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--primary-blue);outline-offset:3px;border-radius:4px}
-
-    header{position:sticky;top:0;background:rgba(10,10,10,.8);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);z-index:1000;border-bottom:1px solid var(--glass-border);box-shadow:0 4px 30px rgba(0,0,0,.3);transition:all .3s ease}
-    header.scrolled{background:rgba(10,10,10,.95);box-shadow:0 8px 40px rgba(59,130,246,.2)}
-    nav{padding:1.5rem 0;display:flex;justify-content:space-between;align-items:center}
-    .logo{font-size:1.5rem;font-weight:900;background:linear-gradient(135deg,var(--primary-blue),var(--primary-green),var(--accent-purple));background-size:200% 200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:flex;align-items:center;gap:.75rem;animation:gradientShift 8s ease infinite;letter-spacing:-.5px}
-    @keyframes gradientShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
-    .logo-icon{width:45px;height:45px;background:linear-gradient(135deg,var(--primary-blue),var(--accent-purple));border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.3rem;font-weight:bold;box-shadow:0 4px 20px var(--glow-blue);transition:transform .3s ease}
-    .logo:hover .logo-icon{transform:rotate(5deg) scale(1.1)}
-    .nav-links{display:flex;gap:3rem;list-style:none;align-items:center}
-    .nav-links a{color:var(--text-secondary);text-decoration:none;transition:all .3s;font-weight:500;position:relative;font-size:.95rem;letter-spacing:.3px}
-    .nav-links a::after{content:'';position:absolute;bottom:-5px;left:0;width:0;height:2px;background:linear-gradient(90deg,var(--primary-blue),var(--accent-purple));transition:width .3s ease}
-    .nav-links a:hover,.nav-links a:focus-visible{color:var(--primary-blue)}
-    .nav-links a:hover::after{width:100%}
-    .hamburger{display:none;background:var(--glass-bg);border:1px solid var(--glass-border);backdrop-filter:blur(10px);color:var(--text-primary);font-size:1.5rem;cursor:pointer;padding:.75rem;border-radius:8px;transition:all .3s}
-    .hamburger:hover{background:var(--primary-blue);border-color:var(--primary-blue);transform:scale(1.05)}
-
-    .hero{min-height:95vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;padding:6rem 0 4rem;overflow:hidden}
-    .hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle, rgba(59,130,246,.1) 0%, transparent 70%);animation:heroGlow 15s ease-in-out infinite}
-    @keyframes heroGlow{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(10%,10%) scale(1.1)}}
-    .hero-content{max-width:1000px;position:relative;z-index:2}
-    .hero-badge{display:inline-block;padding:.5rem 1.5rem;background:var(--glass-bg);border:1px solid var(--glass-border);backdrop-filter:blur(10px);border-radius:50px;margin-bottom:2rem;font-size:.9rem;font-weight:500;color:var(--primary-blue);animation:fadeInUp .8s ease .2s backwards}
-    .hero-title{font-size:clamp(3.5rem,10vw,7rem);font-weight:900;margin-bottom:1.5rem;background:linear-gradient(135deg,#fff,var(--primary-blue),var(--accent-purple),var(--primary-green));background-size:300% 300%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:heroGradient 8s ease infinite,fadeInUp .8s ease .4s backwards;line-height:1.1;letter-spacing:-2px}
-    @keyframes heroGradient{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
-    .hero-subtitle{font-size:clamp(1.3rem,3vw,2rem);color:var(--text-secondary);margin-bottom:3rem;font-weight:300;line-height:1.5;animation:fadeInUp .8s ease .6s backwards}
-    .hero-subtitle span{color:var(--primary-blue);font-weight:500}
-    .video-container{position:relative;width:100%;max-width:1000px;margin:4rem auto;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:24px;border:2px solid var(--glass-border);background:var(--glass-bg);backdrop-filter:blur(20px);box-shadow:0 20px 60px rgba(0,0,0,.5),0 0 100px var(--glow-blue),inset 0 1px 0 rgba(255,255,255,.1);animation:fadeInUp .8s ease .8s backwards;transition:all .5s ease}
-    .video-container:hover{transform:translateY(-10px);box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 120px var(--glow-blue),inset 0 1px 0 rgba(255,255,255,.15)}
-    .video-container::before{content:'';position:absolute;inset:-2px;background:linear-gradient(135deg,var(--primary-blue),var(--accent-purple),var(--primary-green));border-radius:24px;z-index:-1;opacity:.5;filter:blur(20px)}
-    .video-container iframe{position:absolute;top:0;left:0;width:100%;height:100%;border-radius:22px}
-
-    .cta-buttons{display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;margin-top:3rem;animation:fadeInUp .8s ease 1s backwards}
-    .btn{padding:1.2rem 3rem;font-size:1.1rem;font-weight:600;border:none;border-radius:14px;cursor:pointer;transition:all .4s cubic-bezier(.175,.885,.32,1.275);text-decoration:none;display:inline-flex;align-items:center;gap:.75rem;position:relative;overflow:hidden;letter-spacing:.3px}
-    .btn::before{content:'';position:absolute;top:50%;left:50%;width:0;height:0;border-radius:50%;background:rgba(255,255,255,.2);transform:translate(-50%,-50%);transition:width .6s,height .6s}
-    .btn:hover::before{width:300px;height:300px}
-    .btn-primary{background:linear-gradient(135deg,var(--primary-blue),var(--accent-purple));color:#fff;box-shadow:0 10px 40px var(--glow-blue)}
-    .btn-primary:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 15px 60px var(--glow-blue)}
-    .btn-secondary{background:var(--glass-bg);color:var(--primary-blue);border:2px solid var(--primary-blue);backdrop-filter:blur(10px)}
-    .btn-secondary:hover{background:var(--primary-blue);color:#fff;transform:translateY(-3px) scale(1.02)}
-
-    section{padding:var(--section-padding) 0;position:relative}
-    .section-header{text-align:center;margin-bottom:5rem}
-    .section-badge{display:inline-block;padding:.5rem 1.5rem;background:var(--glass-bg);border:1px solid var(--glass-border);backdrop-filter:blur(10px);border-radius:50px;margin-bottom:1.5rem;font-size:.85rem;font-weight:600;color:var(--accent-cyan);text-transform:uppercase;letter-spacing:1px}
-    .section-title{font-size:clamp(2.5rem,6vw,4rem);font-weight:900;margin-bottom:1.5rem;background:linear-gradient(135deg,var(--text-primary),var(--primary-blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:-1px}
-    .section-subtitle{font-size:clamp(1.1rem,2vw,1.4rem);color:var(--text-secondary);max-width:700px;margin:0 auto;line-height:1.7}
-
-    .products{background:linear-gradient(180deg,transparent 0%, rgba(59,130,246,.03) 50%, transparent 100%)}
-    .product-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:2.5rem}
-    .product-card{background:linear-gradient(135deg,rgba(15,23,42,.9),rgba(30,41,59,.8));border:1px solid var(--glass-border);border-radius:24px;padding:3rem;transition:all .5s cubic-bezier(.175,.885,.32,1.275);backdrop-filter:blur(20px);position:relative;overflow:hidden}
-    .product-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--primary-blue),var(--accent-purple));opacity:0;transition:opacity .5s}
-    .product-card:hover::before{opacity:.05}
-    .product-card:hover{transform:translateY(-15px) scale(1.02);border-color:var(--primary-blue);box-shadow:0 30px 80px rgba(0,0,0,.4),0 0 80px var(--glow-blue),inset 0 1px 0 rgba(255,255,255,.1)}
-    .product-logo-wrapper{position:relative;margin-bottom:2rem;z-index:1}
-    .product-logo{width:100%;max-width:280px;height:auto;display:block;margin:0 auto;filter:drop-shadow(0 10px 30px rgba(59,130,246,.3));transition:transform .5s ease}
-    .product-card:hover .product-logo{transform:scale(1.05)}
-    .product-description{color:var(--text-secondary);margin-bottom:2rem;line-height:1.8;font-size:1.05rem;position:relative;z-index:1}
-    .feature-list{list-style:none;margin-bottom:2.5rem;position:relative;z-index:1}
-    .feature-list li{padding:.75rem 0;color:var(--text-secondary);position:relative;padding-left:2rem;transition:all .3s;font-size:.95rem}
-    .feature-list li::before{content:'✓';position:absolute;left:0;color:var(--primary-green);font-weight:bold;font-size:1.2rem;width:24px;height:24px;display:flex;align-items:center;justify-content:center;background:rgba(34,197,94,.1);border-radius:50%}
-    .feature-list li:hover{color:var(--text-primary);padding-left:2.3rem}
-    .platform-badge{display:inline-block;padding:.6rem 1.2rem;background:linear-gradient(135deg,var(--primary-green),var(--accent-cyan));color:#fff;border-radius:10px;font-size:.9rem;font-weight:700;margin-bottom:1.5rem;box-shadow:0 4px 15px var(--glow-green);position:relative;z-index:1}
-
-    .features{background:radial-gradient(ellipse at center, rgba(139,92,246,.05) 0%, transparent 70%)}
-    .features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:3rem}
-    .feature-item{text-align:center;padding:2.5rem;background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:20px;backdrop-filter:blur(10px);transition:all .4s ease}
-    .feature-item:hover{transform:translateY(-10px);border-color:var(--accent-purple);box-shadow:0 20px 60px var(--glow-purple)}
-    .feature-icon{width:80px;height:80px;background:linear-gradient(135deg,var(--primary-blue),var(--accent-purple));border-radius:20px;display:flex;align-items:center;justify-content:center;margin:0 auto 2rem;font-size:2.5rem;box-shadow:0 10px 30px var(--glow-blue);transition:all .4s ease}
-    .feature-item:hover .feature-icon{transform:rotateY(180deg) scale(1.1);box-shadow:0 15px 40px var(--glow-purple)}
-    .feature-title{font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--text-primary)}
-    .feature-text{color:var(--text-secondary);line-height:1.8;font-size:1.05rem}
-
-    .pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:3rem;margin-top:4rem}
-    .price-card{text-align:center;padding:2.5rem;background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:20px;backdrop-filter:blur(10px);transition:all .4s ease}
-    .price-card:hover{transform:translateY(-10px);border-color:var(--primary-blue);box-shadow:0 20px 60px var(--glow-blue)}
-    .price{font-size:3rem;font-weight:900;background:linear-gradient(135deg,var(--primary-blue),var(--accent-purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin:1.5rem 0}
-
-    .email-form{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:3rem}
-    .email-form input{padding:1.2rem 2rem;border-radius:12px;border:1px solid var(--glass-border);background:var(--glass-bg);backdrop-filter:blur(10px);color:var(--text-primary);min-width:300px;font-size:1rem;transition:all .3s}
-    .email-form input:focus{border-color:var(--primary-blue);box-shadow:0 0 20px var(--glow-blue)}
-    .email-form input::placeholder{color:var(--text-muted)}
-
-    .comparison{background:linear-gradient(180deg, rgba(59,130,246,.03) 0%, transparent 50%, rgba(139,92,246,.03) 100%)}
-    .comparison-table{background:linear-gradient(135deg,rgba(15,23,42,.9),rgba(30,41,59,.8));border-radius:24px;overflow:hidden;border:1px solid var(--glass-border);backdrop-filter:blur(20px);box-shadow:0 20px 60px rgba(0,0,0,.3)}
-    .comparison-table table{width:100%;border-collapse:collapse}
-    .comparison-table th,.comparison-table td{padding:1.75rem 2rem;text-align:left;border-bottom:1px solid rgba(59,130,246,.1);transition:background .3s}
-    .comparison-table tbody tr:hover{background:rgba(59,130,246,.05)}
-    .comparison-table th{background:linear-gradient(135deg,rgba(59,130,246,.2),rgba(139,92,246,.2));font-weight:700;color:var(--primary-blue);font-size:1.1rem;text-transform:uppercase;letter-spacing:.5px}
-    .comparison-table td{color:var(--text-secondary);font-size:1.05rem}
-    .comparison-table td span{color:var(--primary-green);font-size:1.3rem}
-
-    .cta-section{background:radial-gradient(ellipse at center, rgba(59,130,246,.1) 0%, transparent 70%);position:relative;overflow:hidden}
-    .cta-section::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle, rgba(139,92,246,.1) 0%, transparent 70%);animation:ctaGlow 20s ease-in-out infinite}
-    @keyframes ctaGlow{0%,100%{transform:translate(0,0) rotate(0)}50%{transform:translate(10%,10%) rotate(180deg)}}
-    .cta-box{background:linear-gradient(135deg, rgba(59,130,246,.1), rgba(139,92,246,.1));border:2px solid var(--glass-border);border-radius:32px;padding:6rem 4rem;max-width:1000px;margin:0 auto;backdrop-filter:blur(20px);box-shadow:0 30px 80px rgba(0,0,0,.3);position:relative;z-index:1}
-    .cta-box::before{content:'';position:absolute;inset:-2px;background:linear-gradient(135deg,var(--primary-blue),var(--accent-purple),var(--primary-green));border-radius:32px;z-index:-1;opacity:.3;filter:blur(30px)}
-    .cta-box h2{font-size:clamp(2.5rem,5vw,3.5rem);margin-bottom:1.5rem;font-weight:900;letter-spacing:-1px}
-    .cta-box p{font-size:1.3rem;color:var(--text-secondary);margin-bottom:3rem;line-height:1.7}
-
-    .back-to-top{position:fixed;bottom:2.5rem;right:2.5rem;background:linear-gradient(135deg,var(--primary-blue),var(--accent-purple));color:#fff;padding:1rem;border-radius:50%;border:none;cursor:pointer;font-size:1.5rem;width:60px;height:60px;display:none;align-items:center;justify-content:center;box-shadow:0 10px 40px var(--glow-blue);transition:all .4s ease;z-index:999}
-    .back-to-top.visible{display:flex}
-    .back-to-top:hover{transform:translateY(-8px) scale(1.1);box-shadow:0 15px 60px var(--glow-blue)}
-
-    footer{padding:5rem 0 3rem;text-align:center;border-top:1px solid var(--glass-border);background:linear-gradient(180deg,transparent 0%, rgba(10,10,10,.8) 100%)}
-    .footer-content{max-width:800px;margin:0 auto}
-    .footer-logo{font-size:1.8rem;font-weight:900;background:linear-gradient(135deg,var(--primary-blue),var(--accent-purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:1rem}
-    .footer-tagline{color:var(--text-secondary);font-size:1.1rem;margin-bottom:2rem}
-    .footer-credits{color:var(--text-muted);font-size:.95rem;line-height:1.8}
-    .footer-credits strong{color:var(--primary-blue);font-weight:600}
-    .footer-credits a{color:var(--primary-blue);text-decoration:none;transition:color .3s}
-    .footer-credits a:hover{color:var(--primary-blue-light)}
-    .footer-divider{width:60px;height:3px;background:linear-gradient(90deg,var(--primary-blue),var(--accent-purple));margin:2rem auto;border-radius:3px}
-
-    @keyframes fadeInUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
-    .fade-in{opacity:0;transform:translateY(40px);transition:opacity .8s ease, transform .8s ease}
-    .fade-in.visible{opacity:1;transform:translateY(0)}
-
-    @media (max-width:1024px){
-      :root{--section-padding:6rem}
-      .product-grid,.features-grid,.pricing-grid{grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem}
-    }
-    @media (max-width:768px){
-      :root{--section-padding:4rem}
-      .hamburger{display:block}
-      .nav-links{display:none;flex-direction:column;position:absolute;top:100%;left:0;width:100%;background:rgba(10,10,10,.98);backdrop-filter:blur(20px);padding:2rem;gap:1.5rem;border-top:1px solid var(--glass-border);box-shadow:0 10px 40px rgba(0,0,0,.5)}
-      .nav-links.active{display:flex}
-      .hero{min-height:100vh;padding:4rem 0 2rem}
-      .video-container{margin:3rem auto}
-      .cta-buttons,.email-form{flex-direction:column;gap:1rem}
-      .btn,.email-form input{width:100%;justify-content:center}
-      .product-grid{grid-template-columns:1fr}
-      .cta-box{padding:4rem 2rem}
-      .particle{display:none}
-      .back-to-top{bottom:1.5rem;right:1.5rem;width:50px;height:50px}
-      .comparison-table{overflow-x:auto}
-      .comparison-table th,.comparison-table td{padding:1rem;font-size:.9rem}
-    }
-
-    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0}
-
-    @media (prefers-reduced-motion:reduce){
-      *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
-    }
-  </style>
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="theme-color" content="#0a0a0a">
+<title>HTML2 Suite Pro — Convert HTML to Native Windows, Linux, and macOS Apps</title>
+<meta name="description" content="Build native desktop apps from your HTML. HTML2Win Pro, HTML2Linux Pro, and HTML2Mac Pro are sold separately and optimized for each OS. Code signing, installers, auto-updates, and CLI included.">
+<link rel="canonical" href="https://html2store.github.io/">
+<meta property="og:type" content="website"><meta property="og:url" content="https://html2store.github.io/">
+<meta property="og:title" content="HTML2 Suite Pro — Convert HTML to Native Windows, Linux, and macOS Apps"><meta property="og:description" content="Build native desktop apps from your HTML. HTML2Win Pro, HTML2Linux Pro, and HTML2Mac Pro are sold separately and optimized for each OS. Code signing, installers, auto-updates, and CLI included.">
+<meta property="og:image" content="https://id01t.github.io/html2-suite-overview.png"><meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https: blob:; script-src 'self' 'unsafe-inline' https://www.youtube.com https://s.ytimg.com https://www.google.com https://formspree.io; style-src 'self' 'unsafe-inline'; font-src 'self' data:; frame-src https://www.youtube.com https://www.youtube-nocookie.com; connect-src 'self' https://www.youtube.com https://www.google.com https://formspree.io; media-src 'self' https://www.youtube.com https://*.googlevideo.com blob:; object-src 'none'; base-uri 'self'; form-action 'self' https://formspree.io;">
+<link rel="preconnect" href="https://www.youtube.com"><link rel="preconnect" href="https://www.google.com">
+<link rel="dns-prefetch" href="https://id01t.github.io">
+<link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-  <a href="#main-content" class="skip-link">Skip to main content</a>
-  <div class="particles" id="particles" aria-hidden="true"></div>
+  
+<header>
+  <div class="container">
+    <nav>
+      <div class="logo"><span class="icon">&lt;/&gt;</span> <a href="./" style="text-decoration:none;color:inherit;">HTML2 Suite Pro</a></div>
+      <ul class="nav-links">
+        <li><a href="./#products">Products</a></li>
+        <li><a href="./#features">Features</a></li>
+        <li><a href="./#pricing">Pricing</a></li>
+        <li><a href="./#faq">FAQ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
-  <header role="banner" id="header">
-    <div class="container">
-      <nav role="navigation" aria-label="Main navigation">
-        <div class="logo">
-          <div class="logo-icon" aria-hidden="true">&lt;/&gt;</div>
-          <span>HTML2 Suite Pro</span>
-        </div>
-        <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false"><span aria-hidden="true">☰</span></button>
-        <ul class="nav-links">
-          <li><a href="#products">Products</a></li>
-          <li><a href="#features">Features</a></li>
-          <li><a href="#pricing">Pricing</a></li>
-          <li><a href="#faq">FAQ</a></li>
-          <li><a href="#cta">Get Started</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-  <main id="main-content">
-    <!-- Hero -->
-    <section class="hero" aria-labelledby="hero-title">
+  <main>
+    <section class="hero">
       <div class="container">
-        <div class="hero-content">
-          <div class="hero-badge">Professional Developer Tools by iD01t Productions</div>
-          <h1 id="hero-title" class="hero-title">Turn HTML into Native Desktop Apps</h1>
-          <p class="hero-subtitle">
-            Three professional tools sold separately:
-            <span>HTML2Win Pro</span>, <span>HTML2Linux Pro</span>, and <span>HTML2Mac Pro</span>.
-            Build once, export for your OS, ship with confidence.
-          </p>
-
-          <div class="video-container">
-            <iframe
-              loading="lazy"
-              src="https://www.youtube-nocookie.com/embed/u990Kr1EndI?rel=0&modestbranding=1"
-              title="HTML2Win Pro Demonstration - Convert HTML to Windows applications"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allowfullscreen></iframe>
-          </div>
-
-          <div class="cta-buttons">
-            <a href="#products" class="btn btn-primary"><span>Explore Products</span><span aria-hidden="true">→</span></a>
-            <a href="#pricing" class="btn btn-secondary"><span>View Pricing</span></a>
-          </div>
+        <h1>Turn HTML into Native Desktop Apps</h1>
+        <p>Three professional tools sold separately: <strong>HTML2Win Pro</strong>, <strong>HTML2Linux Pro</strong>, and <strong>HTML2Mac Pro</strong>. Build once, export for your OS, ship with confidence.</p>
+        <p>
+          <a class="btn primary" href="#products">Explore Products →</a>
+          <a class="btn secondary" href="#pricing">View Pricing</a>
+        </p>
+        <div class="video" aria-label="HTML2Win Pro Demonstration">
+          <iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/u990Kr1EndI?rel=0&modestbranding=1"
+            title="HTML2Win Pro Demonstration" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
       </div>
     </section>
 
-    <!-- Products -->
-    <section class="products" id="products">
+    <section id="products" class="section">
       <div class="container">
-        <div class="section-header fade-in">
-          <div class="section-badge">Choose Your Platform</div>
-          <h2 class="section-title">Professional Conversion Tools</h2>
-          <p class="section-subtitle">
-            Enterprise-grade solutions sold separately and optimized for each operating system. Build once, deploy everywhere with confidence.
-          </p>
-        </div>
-
-        <div class="product-grid">
-          <!-- Win -->
-          <article class="product-card fade-in">
-            <div class="product-logo-wrapper">
-              <img
-                src="https://id01t.github.io/html2win-pro-logo.png"
-                alt="HTML2Win Pro"
-                class="product-logo"
-                width="280" height="93"
-                loading="lazy" decoding="async" fetchpriority="low" />
-            </div>
-            <p class="product-description">
-              Convert HTML into native Windows apps with first-class system integration. Generate installers, enable auto-updates, and sign builds for enterprise distribution.
-            </p>
-            <ul class="feature-list" aria-label="HTML2Win Pro features">
-              <li>Output: .exe installer and .msi packaging</li>
-              <li>Auto-update channel with delta patches</li>
-              <li>Code signing: Authenticode, SHA-256</li>
-              <li>System tray, file associations, protocol handlers</li>
-              <li>CLI: headless builds and CI automation</li>
+        <h2>Professional Conversion Tools</h2>
+        <p class="lead">Enterprise-grade solutions, sold separately, optimized for each operating system.</p>
+        <div class="grid cards">
+          <article class="card">
+            <span class="badge">Windows</span>
+            <h3>HTML2Win Pro</h3>
+            <p>Convert HTML into native Windows apps with installers, auto-updates, and signing.</p>
+            <ul class="small">
+              <li>Outputs: .exe installer, .msi</li>
+              <li>Delta auto-updates</li>
+              <li>Authenticode, SHA-256</li>
             </ul>
-            <div class="platform-badge">💻 Windows Platform</div>
-            <a href="https://id01t.itch.io/html2win" class="btn btn-primary" style="width:100%" target="_blank" rel="noopener noreferrer">
-              <span>Buy HTML2Win Pro</span><span aria-hidden="true">→</span>
-            </a>
-          </article>
-
-          <!-- Linux -->
-          <article class="product-card fade-in">
-            <div class="product-logo-wrapper">
-              <img
-                src="https://id01t.github.io/html2linux-pro-logo.png"
-                alt="HTML2Linux Pro"
-                class="product-logo"
-                width="280" height="93"
-                loading="lazy" decoding="async" fetchpriority="low" />
-            </div>
-            <p class="product-description">
-              Produce lean, compatible native Linux apps for major distros. Ship a single file AppImage or native packages for your target environment.
+            <p>
+              <a class="btn primary" data-buy="win" href="https://id01t.itch.io/html2win" target="_blank" rel="noopener noreferrer">Buy Now</a>
+              <a class="btn secondary" href="win.html">Learn More</a>
             </p>
-            <ul class="feature-list" aria-label="HTML2Linux Pro features">
-              <li>Output: AppImage, .deb (Debian/Ubuntu), .rpm (Fedora/Red Hat)</li>
-              <li>Auto-updates via AppImageUpdate or repo flows</li>
-              <li>Desktop entries, icons, MIME types</li>
-              <li>Sandbox and FS permissions guidance</li>
-              <li>CLI: reproducible builds for CI</li>
-            </ul>
-            <div class="platform-badge">🐧 Linux Platform</div>
-            <a href="https://id01t.itch.io/html2linux-pro" class="btn btn-primary" style="width:100%" target="_blank" rel="noopener noreferrer">
-              <span>Buy HTML2Linux Pro</span><span aria-hidden="true">→</span>
-            </a>
           </article>
 
-          <!-- Mac -->
-          <article class="product-card fade-in">
-            <div class="product-logo-wrapper">
-              <img
-                src="https://id01t.github.io/html2mac-pro-logo.png"
-                alt="HTML2Mac Pro"
-                class="product-logo"
-                width="280" height="93"
-                loading="lazy" decoding="async" fetchpriority="low" />
-            </div>
-            <p class="product-description">
-              Build polished macOS apps that feel truly native. Create .app bundles, sign and notarize, and prepare for App Store or direct distribution.
+          <article class="card">
+            <span class="badge">Linux</span>
+            <h3>HTML2Linux Pro</h3>
+            <p>Build lean, compatible Linux apps as AppImage or native packages with CI-friendly CLI.</p>
+            <ul class="small">
+              <li>Outputs: AppImage, .deb, .rpm</li>
+              <li>AppImageUpdate or repo flow</li>
+              <li>Desktop entries, MIME types</li>
+            </ul>
+            <p>
+              <a class="btn primary" data-buy="linux" href="https://id01t.itch.io/html2linux-pro" target="_blank" rel="noopener noreferrer">Buy Now</a>
+              <a class="btn secondary" href="linux.html">Learn More</a>
             </p>
-            <ul class="feature-list" aria-label="HTML2Mac Pro features">
-              <li>Output: .app bundle, .dmg installer</li>
-              <li>Code signing and Apple notarization</li>
-              <li>Dock badges, notifications, URL schemes</li>
-              <li>Auto-update with differential releases</li>
-              <li>CLI: scripted builds for CI</li>
+          </article>
+
+          <article class="card">
+            <span class="badge">macOS</span>
+            <h3>HTML2Mac Pro</h3>
+            <p>Create polished macOS apps with signing, notarization, and auto-update workflows.</p>
+            <ul class="small">
+              <li>Outputs: .app bundle, .dmg</li>
+              <li>Sign & notarize</li>
+              <li>App Store or direct distribution</li>
             </ul>
-            <div class="platform-badge">🍎 macOS Platform</div>
-            <a href="#cta" class="btn btn-secondary" style="width:100%">
-              <span>Notify Me</span><span aria-hidden="true">→</span>
-            </a>
-            <p class="feature-text" style="margin-top:.75rem;color:var(--text-muted)">Public beta planned Q2 · Notarized builds at launch</p>
+            <p>
+              <a class="btn secondary" href="mac.html">Notify Me</a>
+            </p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- Features -->
-    <section class="features" id="features">
+    <section id="features" class="section">
       <div class="container">
-        <div class="section-header fade-in">
-          <div class="section-badge">Why Choose Us</div>
-          <h2 class="section-title">Enterprise-Grade Features</h2>
-          <p class="section-subtitle">Professional tools built for developers who demand reliability, performance, and production-ready results.</p>
-        </div>
-
-        <div class="features-grid">
-          <article class="feature-item fade-in">
-            <div class="feature-icon" aria-hidden="true">⚡</div>
-            <h3 class="feature-title">Lightning Fast Builds</h3>
-            <p class="feature-text">Optimized build pipeline converts HTML projects to native apps in seconds. No waiting, no complexity.</p>
-          </article>
-
-          <article class="feature-item fade-in">
-            <div class="feature-icon" aria-hidden="true">🔒</div>
-            <h3 class="feature-title">Secure & Reliable</h3>
-            <p class="feature-text">Enterprise-grade security with code signing, sandboxed execution, and industry-standard encryption.</p>
-          </article>
-
-          <article class="feature-item fade-in">
-            <div class="feature-icon" aria-hidden="true">🎨</div>
-            <h3 class="feature-title">Zero Code Changes</h3>
-            <p class="feature-text">Your existing HTML, CSS, and JavaScript work perfectly. No framework lock-in or rewrites needed.</p>
-          </article>
-
-          <article class="feature-item fade-in">
-            <div class="feature-icon" aria-hidden="true">🚀</div>
-            <h3 class="feature-title">Production Ready</h3>
-            <p class="feature-text">Complete deployment with installer generation, auto-updates, and distribution support included.</p>
-          </article>
-
-          <article class="feature-item fade-in">
-            <div class="feature-icon" aria-hidden="true">🔧</div>
-            <h3 class="feature-title">Developer Friendly</h3>
-            <p class="feature-text">Intuitive CLI tools, comprehensive docs, and active community support when you need it.</p>
-          </article>
-
-          <article class="feature-item fade-in">
-            <div class="feature-icon" aria-hidden="true">📦</div>
-            <h3 class="feature-title">All-In-One Solution</h3>
-            <p class="feature-text">Everything included: runtime, packaging, icons, signing—no additional dependencies required.</p>
-          </article>
+        <h2>Enterprise-Grade Features</h2>
+        <p class="lead">Performance, security, and production readiness built in.</p>
+        <div class="grid cards">
+          <div class="card"><h3>Lightning Fast Builds</h3><p>Optimized pipeline converts HTML to native apps in seconds.</p></div>
+          <div class="card"><h3>Secure & Reliable</h3><p>Code signing, sandboxing, and encryption best practices.</p></div>
+          <div class="card"><h3>Zero Code Changes</h3><p>Use your existing HTML, CSS, and JavaScript as-is.</p></div>
+          <div class="card"><h3>Production Ready</h3><p>Installers, auto-updates, and distribution support included.</p></div>
+          <div class="card"><h3>Developer Friendly</h3><p>Intuitive CLI, clear docs, and CI automation.</p></div>
+          <div class="card"><h3>All-In-One</h3><p>Runtime, packaging, icons, and signing—no extra deps.</p></div>
         </div>
       </div>
     </section>
 
-    <!-- Pricing -->
-    <section class="features" id="pricing">
+    <section id="pricing" class="section">
       <div class="container">
-        <div class="section-header fade-in">
-          <div class="section-badge">Pricing</div>
-          <h2 class="section-title">Choose Your Platform</h2>
-          <p class="section-subtitle">Each product is sold separately. Lifetime license with free minor updates.</p>
-        </div>
-
-        <div class="pricing-grid">
-          <article class="price-card fade-in" aria-labelledby="price-win">
-            <h3 id="price-win" class="feature-title">HTML2Win Pro</h3>
-            <p class="feature-text">Single-user license. Includes CLI, installers, auto-updates, and signing support.</p>
+        <h2>Pricing</h2>
+        <p class="lead">Each product is sold separately. Lifetime license with free minor updates.</p>
+        <div class="grid cards">
+          <article class="card">
+            <h3>HTML2Win Pro</h3>
             <div class="price">$49</div>
-            <p style="color:var(--text-secondary);margin-bottom:1rem">Sold separately · Lifetime license · 14-day money-back guarantee</p>
-            <p style="color:var(--text-muted);margin-bottom:2rem">One-time payment</p>
-            <a class="btn btn-primary" href="https://id01t.itch.io/html2win" target="_blank" rel="noopener noreferrer" style="width:100%"><span>Buy HTML2Win Pro</span></a>
+            <p class="small">One-time payment · 14-day money-back guarantee</p>
+            <p><a class="btn primary" data-buy="win" href="https://id01t.itch.io/html2win" target="_blank" rel="noopener noreferrer">Buy HTML2Win Pro</a></p>
           </article>
-
-          <article class="price-card fade-in" aria-labelledby="price-linux">
-            <h3 id="price-linux" class="feature-title">HTML2Linux Pro</h3>
-            <p class="feature-text">Single-user license. AppImage, .deb and .rpm builds with auto-update options.</p>
+          <article class="card">
+            <h3>HTML2Linux Pro</h3>
             <div class="price">$49</div>
-            <p style="color:var(--text-secondary);margin-bottom:1rem">Sold separately · Lifetime license · 14-day money-back guarantee</p>
-            <p style="color:var(--text-muted);margin-bottom:2rem">One-time payment</p>
-            <a class="btn btn-primary" href="https://id01t.itch.io/html2linux-pro" target="_blank" rel="noopener noreferrer" style="width:100%"><span>Buy HTML2Linux Pro</span></a>
+            <p class="small">One-time payment · 14-day money-back guarantee</p>
+            <p><a class="btn primary" data-buy="linux" href="https://id01t.itch.io/html2linux-pro" target="_blank" rel="noopener noreferrer">Buy HTML2Linux Pro</a></p>
           </article>
-
-          <article class="price-card fade-in" aria-labelledby="price-mac">
-            <h3 id="price-mac" class="feature-title">HTML2Mac Pro</h3>
-            <p class="feature-text">Single-user license. .app bundle, .dmg, signing and notarization workflows.</p>
+          <article class="card">
+            <h3>HTML2Mac Pro</h3>
             <div class="price">$49</div>
-            <p style="color:var(--text-secondary);margin-bottom:1rem">Sold separately · Lifetime license · 14-day money-back guarantee</p>
-            <p style="color:var(--text-muted);margin-bottom:2rem">Coming Soon</p>
-            <a class="btn btn-secondary" href="#cta" style="width:100%"><span>Notify Me</span></a>
+            <p class="small">Coming soon · Join the list</p>
+            <p><a class="btn secondary" href="mac.html">Notify Me</a></p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- FAQ -->
-    <section class="comparison" id="faq">
+    <section id="faq" class="section">
       <div class="container">
-        <div class="section-header fade-in">
-          <div class="section-badge">Help</div>
-          <h2 class="section-title">Frequently Asked Questions</h2>
-          <p class="section-subtitle">Quick answers to common questions from developers and teams.</p>
-        </div>
-
-        <div class="comparison-table fade-in">
-          <table role="table" aria-label="Frequently asked questions">
-            <tbody>
-              <tr><th scope="row">Are the products sold separately?</th><td>Yes. HTML2Win Pro, HTML2Linux Pro, and HTML2Mac Pro are separate licenses.</td></tr>
-              <tr><th scope="row">Do I need to rewrite my code?</th><td>No. Your existing HTML, CSS, and JavaScript are used as-is.</td></tr>
-              <tr><th scope="row">How do updates work?</th><td>Enable auto-updates; we ship differential releases to minimize download size.</td></tr>
-              <tr><th scope="row">Is code signing supported?</th><td>Yes. Windows Authenticode, macOS signing and notarization, and Linux package signing are supported.</td></tr>
-              <tr><th scope="row">Can I automate builds?</th><td>Yes. The CLI supports headless CI builds with reproducible outputs.</td></tr>
-              <tr><th scope="row">Refunds?</th><td>14-day money-back guarantee if the tool does not meet your needs.</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="cta-section" id="cta">
-      <div class="container">
-        <div class="cta-box fade-in">
-          <h2>Ready to Ship Native Apps?</h2>
-          <p>Download, build, and ship today. Each product is sold separately and includes installers, auto-updates, and CLI. Try it risk-free with a 14-day money-back guarantee.</p>
-
-          <form class="email-form" action="https://formspree.io/f/xovqndnp" method="POST" aria-label="Email updates signup">
-            <input type="email" name="email" required placeholder="you@company.com" aria-label="Email address" />
-            <button class="btn btn-primary" type="submit"><span>Get Updates & Early Offers</span></button>
-          </form>
-          <p style="margin-top:.75rem;color:var(--text-muted);font-size:.9rem">
-            We’ll send occasional product updates and early offers. Unsubscribe anytime.
-          </p>
-
-          <div class="cta-buttons" style="margin-top:2rem">
-            <a href="#products" class="btn btn-secondary"><span>View All Products</span><span aria-hidden="true">↑</span></a>
-          </div>
-        </div>
+        <h2>FAQ</h2>
+        <table class="table" role="table" aria-label="Frequently asked questions">
+          <tbody>
+            <tr><th scope="row">Are the products sold separately?</th><td>Yes, each OS-specific tool is a separate license.</td></tr>
+            <tr><th scope="row">Do I need to rewrite my code?</th><td>No, use your current HTML, CSS, and JS.</td></tr>
+            <tr><th scope="row">How do updates work?</th><td>Enable auto-updates with differential releases.</td></tr>
+            <tr><th scope="row">Is code signing supported?</th><td>Windows Authenticode, macOS signing & notarization, and Linux package signing.</td></tr>
+            <tr><th scope="row">Can I automate builds?</th><td>Yes, the CLI supports headless CI with reproducible outputs.</td></tr>
+            <tr><th scope="row">Refunds?</th><td>14-day money-back guarantee if it doesn’t meet your needs.</td></tr>
+          </tbody>
+        </table>
       </div>
     </section>
   </main>
+  
+<footer class="footer">
+  <div class="container">
+    <p class="small">Created by Guillaume Lessard — iD01t Productions © 2025</p>
+    <p class="small"><a href="mailto:guillaume@id01t.ca" style="color:var(--primary-blue)">guillaume@id01t.ca</a></p>
+  </div>
+</footer>
+<script src="script.js"></script>
 
-  <button class="back-to-top" aria-label="Back to top"><span aria-hidden="true">↑</span></button>
-
-  <footer role="contentinfo">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-logo">HTML2 Suite Pro</div>
-        <p class="footer-tagline">Professional-grade tools for professional developers</p>
-        <div class="footer-divider"></div>
-        <div class="footer-credits">
-          <p><strong>Created by Guillaume Lessard</strong><br />Founder & Lead Developer</p>
-          <p style="margin-top:1rem;"><strong>iD01t Productions</strong> &copy; 2025<br />All rights reserved</p>
-          <p style="margin-top:1.5rem;font-size:.9rem;">HTML2Win Pro &middot; HTML2Linux Pro &middot; HTML2Mac Pro<br />Enterprise-grade HTML to native application converters</p>
-          <p style="margin-top:1rem;"><a href="mailto:guillaume@id01t.ca" rel="noopener noreferrer">guillaume@id01t.ca</a></p>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    // Particles
-    const isMobile = window.innerWidth < 768;
-    const particleCount = isMobile ? 0 : 40;
-    const particlesContainer = document.getElementById('particles');
-    for (let i = 0; i < particleCount; i++) {
-      const p = document.createElement('div');
-      p.className = 'particle';
-      p.style.left = Math.random() * 100 + '%';
-      p.style.top = Math.random() * 100 + '%';
-      p.style.animationDelay = Math.random() * 25 + 's';
-      p.style.animationDuration = (Math.random() * 15 + 20) + 's';
-      const colors = ['var(--primary-blue)', 'var(--accent-purple)', 'var(--primary-green)'];
-      p.style.background = colors[Math.floor(Math.random() * colors.length)];
-      particlesContainer.appendChild(p);
-    }
-
-    // Mobile Nav
-    const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
-    hamburger.addEventListener('click', () => {
-      const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
-      hamburger.setAttribute('aria-expanded', !isExpanded);
-      navLinks.classList.toggle('active');
-    });
-    navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-        hamburger.setAttribute('aria-expanded', 'false');
-      });
-    });
-
-    // Smooth scroll with focus mgmt
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', e => {
-        const target = document.querySelector(anchor.getAttribute('href'));
-        if (!target) return;
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        target.setAttribute('tabindex', '-1'); target.focus();
-      });
-    });
-
-    // Back to top + header shadow
-    const backToTop = document.querySelector('.back-to-top');
-    window.addEventListener('scroll', () => {
-      backToTop.classList.toggle('visible', window.scrollY > 400);
-      document.getElementById('header').classList.toggle('scrolled', window.scrollY > 100);
-    });
-    backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-    // Intersection Observer
-    const observer = new IntersectionObserver((entries, obs) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) { entry.target.classList.add('visible'); obs.unobserve(entry.target); }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -100px 0px' });
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-    // Pause animations when tab hidden
-    document.addEventListener('visibilitychange', () => {
-      document.body.style.animationPlayState = document.hidden ? 'paused' : 'running';
-    });
-
-    // Simple conversion ping (replace with your analytics handler)
-    document.querySelectorAll('a[href*="itch.io/html2"]').forEach(a=>{
-      a.addEventListener('click', ()=> {
-        window.dispatchEvent(new CustomEvent('html2-buy-click', { detail:{ href:a.href }}));
-      });
-    });
-
-    // Console hello
-    console.log('%c🚀 HTML2 Suite Pro', 'color:#3b82f6;font-size:24px;font-weight:bold;');
-    console.log('%cBuilt by Guillaume Lessard | iD01t Productions © 2025', 'color:#22c55e;font-size:14px;');
-    console.log('%cContact: guillaume@id01t.ca', 'color:#8b5cf6;font-size:12px;');
-  </script>
 </body>
+
 </html>
